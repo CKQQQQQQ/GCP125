@@ -1,0 +1,75 @@
+# Copyright (c) 2014-2015 Arduino LLC.  All right reserved.
+# Copyright (c) 2016 Sandeep Mistry All right reserved.
+# Copyright (c) 2017 Adafruit Industries.  All right reserved.
+# Copyright (c) 2020 LS Co., Ltd. . All rights reserved.
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+menu.softdevice=Bootloader
+menu.debug=Debug
+
+# ----------------------------------
+# GCP125 nRF52
+# ----------------------------------
+GCP125_nRF52.name=GCP125 nRF52840
+
+# VID/PID for bootloader with/without UF2, Arduino + Circuitpython App
+GCP125_nRF52.vid.0=0x8787
+GCP125_nRF52.pid.0=0x5566
+GCP125_nRF52.vid.1=0x8787
+GCP125_nRF52.pid.1=0x9527
+GCP125_nRF52.vid.2=0xFFFF
+GCP125_nRF52.pid.2=0x0000
+GCP125_nRF52.vid.3=0xFFFF
+GCP125_nRF52.pid.3=0x0001
+
+# Upload
+GCP125_nRF52.bootloader.tool=bootburn
+GCP125_nRF52.upload.tool=nrfutil
+GCP125_nRF52.upload.protocol=nrfutil
+GCP125_nRF52.upload.use_1200bps_touch=true
+GCP125_nRF52.upload.wait_for_upload_port=true
+GCP125_nRF52.upload.maximum_size=815104
+GCP125_nRF52.upload.maximum_data_size=237568
+
+# Build
+GCP125_nRF52.build.mcu=cortex-m4
+GCP125_nRF52.build.f_cpu=64000000
+GCP125_nRF52.build.board=GCP125_nRF52
+GCP125_nRF52.build.core=nRF5
+GCP125_nRF52.build.variant=GCP125_nRF52
+GCP125_nRF52.build.usb_manufacturer="LS Co., Ltd."
+GCP125_nRF52.build.usb_product="GCP125 nRF52"
+GCP125_nRF52.build.extra_flags=-DNRF52840_XXAA {build.flags.usb}
+GCP125_nRF52.build.ldscript=nrf52840_s140_v6.ld
+GCP125_nRF52.build.vid=0x8787
+GCP125_nRF52.build.pid=0x5566
+
+# SofDevice Menu
+GCP125_nRF52.menu.softdevice.s140v6=0.9.0 SoftDevice s140 6.1.1
+GCP125_nRF52.menu.softdevice.s140v6.build.sd_name=s140
+GCP125_nRF52.menu.softdevice.s140v6.build.sd_version=6.1.1
+GCP125_nRF52.menu.softdevice.s140v6.build.sd_fwid=0x00B6
+
+# Debug Menu
+GCP125_nRF52.menu.debug.l0=Level 0 (Release)
+GCP125_nRF52.menu.debug.l0.build.debug_flags=-DCFG_DEBUG=0
+GCP125_nRF52.menu.debug.l1=Level 1 (Error Message)
+GCP125_nRF52.menu.debug.l1.build.debug_flags=-DCFG_DEBUG=1
+GCP125_nRF52.menu.debug.l2=Level 2 (Full Debug)
+GCP125_nRF52.menu.debug.l2.build.debug_flags=-DCFG_DEBUG=2
+GCP125_nRF52.menu.debug.l3=Level 3 (Segger SystemView)
+GCP125_nRF52.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
+GCP125_nRF52.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1

@@ -1,0 +1,245 @@
+#**********************************************
+# Jlink with nrfjprog
+#**********************************************
+nrfjprog.name=J-Link for GCP125 nRF52
+nrfjprog.program.tool=bootburn
+nrfjprog.program.cmd=nrfjprog
+nrfjprog.program.cmd.windows={runtime.tools.nrfjprog.path}/nrfjprog.exe
+
+# Burn bootloader pattern
+nrfjprog.program.burn_pattern="{program.cmd}" --program "{bootloader.file}.hex" -f nrf52 --chiperase --reset
+
+# Jlink to upload sketch
+nrfjprog.program.params.quiet=
+nrfjprog.program.params.verbose=
+nrfjprog.program.pattern="{program.cmd}" --reset --program "{build.path}/{build.project_name}.hex" --sectorerase -f nrf52
+
+# nrfjprog --erasepage {upload.BOOT_SETTING_ADDR} -f nrf52 && nrfjprog --memwr {upload.BOOT_SETTING_ADDR} --val 0x00000001 -f nrf52 && nrfjprog --reset -f nrf52
+# tools.nrfutil.upload.BOOT_SETTING_ADDR=0xFF000
+
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot.name=DFU for GCP125 nRF52
+nrfutil_boot.program.tool=bootburn
+nrfutil_boot.program.cmd=adafruit-nrfutil
+nrfutil_boot.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot.program.params.quiet=
+nrfutil_boot.program.params.verbose=
+nrfutil_boot.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot_triH.name=GCP125 Official Firmware
+nrfutil_boot_triH.program.tool=bootburn
+nrfutil_boot_triH.program.cmd=adafruit-nrfutil
+nrfutil_boot_triH.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot_triH.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot_triH.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file2}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot_triH.program.params.quiet=
+nrfutil_boot_triH.program.params.verbose=
+nrfutil_boot_triH.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot_triH1.name=GCP125 ECG_BT
+nrfutil_boot_triH1.program.tool=bootburn
+nrfutil_boot_triH1.program.cmd=adafruit-nrfutil
+nrfutil_boot_triH1.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot_triH1.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot_triH1.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file3}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot_triH1.program.params.quiet=
+nrfutil_boot_triH1.program.params.verbose=
+nrfutil_boot_triH1.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot_triH2.name=GCP125 ECG_Pulse
+nrfutil_boot_triH2.program.tool=bootburn
+nrfutil_boot_triH2.program.cmd=adafruit-nrfutil
+nrfutil_boot_triH2.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot_triH2.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot_triH2.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file4}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot_triH2.program.params.quiet=
+nrfutil_boot_triH2.program.params.verbose=
+nrfutil_boot_triH2.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot_triH3.name=GCP125 EEG_BT
+nrfutil_boot_triH3.program.tool=bootburn
+nrfutil_boot_triH3.program.cmd=adafruit-nrfutil
+nrfutil_boot_triH3.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot_triH3.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot_triH3.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file5}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot_triH3.program.params.quiet=
+nrfutil_boot_triH3.program.params.verbose=
+nrfutil_boot_triH3.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot_triH4.name=GCP125 EEG_BT
+nrfutil_boot_triH4.program.tool=bootburn
+nrfutil_boot_triH4.program.cmd=adafruit-nrfutil
+nrfutil_boot_triH4.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot_triH4.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot_triH4.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file6}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot_triH4.program.params.quiet=
+nrfutil_boot_triH4.program.params.verbose=
+nrfutil_boot_triH4.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot_triH5.name=GCP125 EEG_LED
+nrfutil_boot_triH5.program.tool=bootburn
+nrfutil_boot_triH5.program.cmd=adafruit-nrfutil
+nrfutil_boot_triH5.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot_triH5.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot_triH5.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file7}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot_triH5.program.params.quiet=
+nrfutil_boot_triH5.program.params.verbose=
+nrfutil_boot_triH5.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot_triH6.name=GCP125 EMG_BT
+nrfutil_boot_triH6.program.tool=bootburn
+nrfutil_boot_triH6.program.cmd=adafruit-nrfutil
+nrfutil_boot_triH6.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot_triH6.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot_triH6.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file8}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot_triH6.program.params.quiet=
+nrfutil_boot_triH6.program.params.verbose=
+nrfutil_boot_triH6.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot_triH7.name=GCP125 EMGFilter
+nrfutil_boot_triH7.program.tool=bootburn
+nrfutil_boot_triH7.program.cmd=adafruit-nrfutil
+nrfutil_boot_triH7.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot_triH7.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot_triH7.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file9}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot_triH7.program.params.quiet=
+nrfutil_boot_triH7.program.params.verbose=
+nrfutil_boot_triH7.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot_triH8.name=GCP125 EOGFilter
+nrfutil_boot_triH8.program.tool=bootburn
+nrfutil_boot_triH8.program.cmd=adafruit-nrfutil
+nrfutil_boot_triH8.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot_triH8.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot_triH8.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file10}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot_triH8.program.params.quiet=
+nrfutil_boot_triH8.program.params.verbose=
+nrfutil_boot_triH8.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot_triH9.name=GCP125 PPG_BT
+nrfutil_boot_triH9.program.tool=bootburn
+nrfutil_boot_triH9.program.cmd=adafruit-nrfutil
+nrfutil_boot_triH9.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot_triH9.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot_triH9.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file11}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot_triH9.program.params.quiet=
+nrfutil_boot_triH9.program.params.verbose=
+nrfutil_boot_triH9.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot_triH10.name=GCP125 PPG_Pulse
+nrfutil_boot_triH10.program.tool=bootburn
+nrfutil_boot_triH10.program.cmd=adafruit-nrfutil
+nrfutil_boot_triH10.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot_triH10.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot_triH10.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file12}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot_triH10.program.params.quiet=
+nrfutil_boot_triH10.program.params.verbose=
+nrfutil_boot_triH10.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot_triHea.name=GCP125 PPGFilter
+nrfutil_boot_triHea.program.tool=bootburn
+nrfutil_boot_triHea.program.cmd=adafruit-nrfutil
+nrfutil_boot_triHea.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot_triHea.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot_triHea.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file13}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot_triHea.program.params.quiet=
+nrfutil_boot_triHea.program.params.verbose=
+nrfutil_boot_triHea.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+#**********************************************
+# adafruit-nrfutil
+#**********************************************
+nrfutil_boot_triPPG.name=GCP125  My_BLE_Test
+nrfutil_boot_triPPG.program.tool=bootburn
+nrfutil_boot_triPPG.program.cmd=adafruit-nrfutil
+nrfutil_boot_triPPG.program.cmd.windows={runtime.platform.path}/tools/adafruit-nrfutil/win32/adafruit-nrfutil.exe
+nrfutil_boot_triPPG.program.cmd.macosx={runtime.platform.path}/tools/adafruit-nrfutil/macos/adafruit-nrfutil
+
+# Burn bootloader pattern
+nrfutil_boot_triPPG.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{bootloader.file14}.zip" -p {serial.port} -b 115200 --touch 1200
+
+# Remind user to select Jlink when used to upload sketch
+nrfutil_boot_triPPG.program.params.quiet=
+nrfutil_boot_triPPG.program.params.verbose=
+nrfutil_boot_triPPG.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
